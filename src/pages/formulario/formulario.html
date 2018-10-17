@@ -30,14 +30,12 @@
       <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="reminder.date" name="data"></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-label>Pessoas</ion-label>
-      <ion-input type="number" [(ngModel)]="reminder.persons" name="persons"></ion-input>
+      <ion-label>Notas</ion-label>
+      <ion-input type="text" [(ngModel)]="reminder.notes" name="notes"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Local</ion-label>
-      <ion-select [(ngModel)]="reminder.local" name="local">
-        <ion-option *ngFor="let local of locales" [value]="local">{{ local.name }}</ion-option>
-      </ion-select>
+      <ion-input type="text" [(ngModel)]="reminder.local" name="local"></ion-input>
     </ion-item>
     <button ion-button type="submit" block>Adicionar</button>
   </form>

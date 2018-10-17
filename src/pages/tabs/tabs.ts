@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 
-import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
 import { HomePage } from '../home/home';
 import { FormularioPage } from '../formulario/formulario'
 import { ListRemindersPage } from '../list-reminders/list-reminders'
@@ -12,9 +10,8 @@ import { ListRemindersPage } from '../list-reminders/list-reminders'
 export class TabsPage {
 
   tab1Root = HomePage;
-  tab2Root = AboutPage;
-  tab3Root = ListRemindersPage;
-  tab4Root = FormularioPage
+  tab2Root = ListRemindersPage;
+  tab3Root = FormularioPage
 
   constructor() {
 
