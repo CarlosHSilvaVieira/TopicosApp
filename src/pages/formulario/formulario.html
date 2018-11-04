@@ -14,29 +14,29 @@
 
 
 <ion-content padding>
-  <form (ngSubmit)="sendForm()">
+  <form [formGroup]="registerForm" (ngSubmit)="sendForm()">
     <ion-item>
       <ion-label>Titulo</ion-label>
-      <ion-input type="text" [(ngModel)]="reminder.title" name="title"></ion-input>
+      <ion-input type="text" formControlName="title" [(ngModel)]="reminder.title" name="title"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Filme</ion-label>
-      <ion-select [(ngModel)]="reminder.movie" name="movie">
+      <ion-select formControlName="movie" [(ngModel)]="reminder.movie" name="movie">
         <ion-option *ngFor="let item of movies" [value]=item>{{ item.name }}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>Data</ion-label>
-      <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="reminder.date" name="data"></ion-datetime>
+      <ion-datetime formControlName="date" displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="reminder.date" name="data"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>Notas</ion-label>
-      <ion-input type="text" [(ngModel)]="reminder.notes" name="notes"></ion-input>
+      <ion-input formControlName="notes" type="text" [(ngModel)]="reminder.notes" name="notes"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Local</ion-label>
-      <ion-input type="text" [(ngModel)]="reminder.local" name="local"></ion-input>
+      <ion-input formControlName="local" type="text" [(ngModel)]="reminder.local" name="local"></ion-input>
     </ion-item>
-    <button ion-button type="submit" block>Adicionar</button>
+    <button ion-button round type="submit" [disabled]="!registerForm.valid" >Adicionar</button>
   </form>
 </ion-content>

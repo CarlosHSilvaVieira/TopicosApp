@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RemindersServiceProvider } from '../../providers/reminders-service/reminders-service';
-
+import { EditPage } from '../edit/edit'
+import { ReminderInterface } from '../../interfaces/reminder';
 /**
  * Generated class for the ListRemindersPage page.
  *
@@ -27,8 +28,13 @@ export class ListRemindersPage {
     this.reminders = this.reminderService.getAllReminders()
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ListRemindersPage');
+  edit(reminder: ReminderInterface) {
+    this.navCtrl.push(EditPage, {
+      'reminder': reminder
+    })
   }
 
+  delete(reminder: ReminderInterface) {
+    this.reminderService.deleteReminder(reminder.id)
+  }
 }

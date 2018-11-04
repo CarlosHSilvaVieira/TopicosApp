@@ -5,6 +5,8 @@ import { MoviesServiceProvider } from '../../providers/movies-service/movies-ser
 import { RemindersServiceProvider } from '../../providers/reminders-service/reminders-service';
 import { ReminderInterface } from '../../interfaces/reminder';
 import { addHours } from 'date-fns'
+import { AlertController } from 'ionic-angular'
+import { FormGroup, FormControl } from '@angular/forms';
 /**
  * Generated class for the FormularioPage page.
  *
@@ -19,6 +21,7 @@ import { addHours } from 'date-fns'
 })
 export class FormularioPage {
 
+  registerForm
   reminder: ReminderInterface = {
     title: '',
     movie: null,
@@ -28,8 +31,16 @@ export class FormularioPage {
     total_price: 0,
   }
   movies = []
-  constructor(public navCtrl: NavController, public navParams: NavParams, public moviesService: MoviesServiceProvider, public reminderService: RemindersServiceProvider, private calendar: Calendar) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public moviesService: MoviesServiceProvider, public reminderService: RemindersServiceProvider, private calendar: Calendar, public alertCtrl: AlertController) {
     this.movies = moviesService.getAllMovies()
+    this.registerForm = new FormGroup({
+
+      title: new FormControl(),
+      movie: new FormControl(),
+      date: new FormControl(),
+      notes: new FormControl(),
+      local: new  FormControl(),
+    })
   }
 
   ionViewDidLoad() {
@@ -46,7 +57,7 @@ export class FormularioPage {
 
     this.calendar.createEventInteractivelyWithOptions(this.reminder.title, this.reminder.locale, this.reminder.notes, new Date(this.reminder.date), addHours(this.reminder.date, 1))
       .then((algo) => { console.log(algo); this.cleanReminder()})
-      .catch((err) => { alert(err) })
+      .catch((err) => { this.alertCtrl.create({ title: 'Erro', subTitle: err }) })
   }
 
   cleanReminder() {
@@ -58,6 +69,8 @@ export class FormularioPage {
       date: new Date(),
       total_price: 0,
     }
+
+    this.registerForm.reset()
   }
 
 }

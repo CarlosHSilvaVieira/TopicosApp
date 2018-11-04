@@ -30,12 +30,12 @@
           <ion-icon name="md-eye"></ion-icon>
           Visualizar
         </button>
-        <button ion-button color="primary">
+        <button ion-button color="primary" (click)="edit(item)">
           <ion-icon name="md-create"></ion-icon>
           Editar
         </button>
         <button ion-button color="danger">
-          <ion-icon name="md-trash"></ion-icon>
+          <ion-icon name="md-trash" (click)="delete(item)" ></ion-icon>
           Excluir
         </button>
       </ion-item-options>

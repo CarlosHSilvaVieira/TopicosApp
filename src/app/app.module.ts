@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { HomePage } from '../pages/home/home';
 import { FormularioPage } from '../pages/formulario/formulario'
 import { ListRemindersPage } from '../pages/list-reminders/list-reminders'
+import { EditPage } from '../pages/edit/edit'
 import { TabsPage } from '../pages/tabs/tabs';
 
 //Providers
@@ -24,6 +25,7 @@ import { Calendar } from '@ionic-native/calendar';
     HomePage,
     FormularioPage,
     ListRemindersPage,
+    EditPage,
     TabsPage
   ],
   imports: [
@@ -38,6 +40,7 @@ import { Calendar } from '@ionic-native/calendar';
     HomePage,
     FormularioPage,
     ListRemindersPage,
+    EditPage,
     TabsPage
   ],
   providers: [
